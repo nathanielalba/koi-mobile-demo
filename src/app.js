@@ -1,38 +1,20 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  Navigator
-} from 'react-native';
+import { Navigator, View } from 'react-native';
 
+import StatusBar from './components/common/StatusBar';
 import KoiSplashPage from './components/KoiSplashPage';
-
-const BaseConfig = Navigator.SceneConfigs.FloatFromRight;
-
-const CustomLeftToRightGesture = Object.assign({}, BaseConfig.gestures.pop, {
-  snapVelocity: 8
-});
-
-const CustomSceneConfig = Object.assign({}, BaseConfig, {
-  springTension: 100,
-  springFriction: 1,
-  gestures: {
-    pop: CustomLeftToRightGesture
-  }
-});
 
 
 class App extends Component {
-
-  configScene(route) {
-    return CustomSceneConfig;
-  }
 
   renderScene(route, navigator) {
     const id = route.id;
     if (id === 'KoiSplashPage') {
       return (
-        <KoiSplashPage navigator={navigator} />
+        <View>
+          <StatusBar backgroundColor='#000' />
+          <KoiSplashPage navigator={navigator} />
+        </View>
       );
     }
     return null;
@@ -44,10 +26,10 @@ class App extends Component {
     ];
 
     return (
-      <Navigator
-        initialRoute={routes[0]}
-        renderScene={this.renderScene}
-      />
+        <Navigator
+          initialRoute={routes[0]}
+          renderScene={this.renderScene}
+        />
     );
   }
 }

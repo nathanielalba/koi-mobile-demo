@@ -1,14 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 const KoiSplashPage = () => {
   return (
-    <View>
+    <Image source={require('../../images/koiBG.jpg')} style={styles.backgroundImageStyle}>
       <Text>
         Hello, this is currently the splash page
       </Text>
-    </View>
+    </Image>
   );
+};
+
+const styles = {
+  backgroundImageStyle: {
+    flex: 1
+  }
 };
 
 export default KoiSplashPage;
